@@ -1,0 +1,165 @@
+@import "partials/color";
+@import "partials/fonts";
+@import "partials/base";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$container-max-widths: (
+  sm: 540px,
+  md: 620px,
+  lg: 900px,
+  xl: 100%,
+);
+
+$theme-colors: (
+  "red": #e8002e,
+  "primary": #ef8100,
+  "light-green": #01983d,
+  "pink": #e6007f,
+  "secondary": #009fe3,
+  "violet": #322a7f,
+  "gray": #545454,
+  "grayLight": #ececec,
+  "grayDark": #080707,
+  "black": #000000,
+  "light": #e1e1e1,
+  "light-plus": #f2f2f2,
+  "white": #ffffff,
+  "bg-lightOp": #f2f2f2e0,
+);
+
+//Base
+$body-color: #ececec; /*color de texto de cualquier etiqueta en body*/
+// $font-family-base: 'Lato', sans-serif !default;
+// $font-family-base: $S !default;
+$link-color: theme-color("primary") !default;
+$link-decoration: none !default;
+$link-hover-color: $red !default;
+$link-hover-decoration: none !default;
+$box-shadow: 0 0rem 0.7rem rgba($black, 0.15) !default;
+
+$h1-font-size: 2.8125rem; //45
+$h2-font-size: 1.875rem; //30
+$h3-font-size: 1.5rem; //24px
+$h4-font-size: 1.375rem; //22
+$h5-font-size: 1.125rem; //18
+$headings-font-weight: normal !default;
+$headings-letter-spacing: 0.046875rem; //.75
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  position: relative;
+  letter-spacing: $headings-letter-spacing;
+}
+
+//Buttons
+$btn-focus-box-shadow: none !important;
+$btn-active-box-shadow: none !important;
+$btn-border-radius: 0.25rem !default;
+$btn-font-size: 1.25rem !default; //20
+$btn-font-size-sm: 0.8125rem !default; //13
+$btn-padding-y: 0.375rem !default;
+$btn-padding-x: 0.75rem !default;
+$btn-padding-y-sm: 0.625rem !default; //10
+$btn-padding-x-sm: 1.25rem !default; //20
+
+//Figure
+$figure-caption-color: #040404 !default;
+
+//Nav links
+$navbar-light-active-color: theme-color("primary") !default;
+
+//Toggle
+$navbar-light-toggler-border-color: transparent !default;
+//$navbar-light-toggler-icon-bg: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fal' data-icon='times' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' class='svg-inline--fa fa-times fa-w-10 fa-2x'%3E%3Cpath fill='%23ffffff' d='M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z' class=''%3E%3C/path%3E%3C/svg%3E") !important;
+$navbar-toggler-padding-y: 0 !default;
+$navbar-toggler-padding-x: 0 !default;
+$input-btn-focus-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15) !important;
+
+//Modal
+// $modal-backdrop-bg: $primary !default;
+// $modal-backdrop-opacity: 0.5 !default;
+//  $modal-content-bg: transparent !default; 
+// $modal-content-border-color: transparent !default;
+// $modal-header-border-color: transparent !default;
+// $modal-footer-border-color: transparent !default;
+
+//Pagination
+$pagination-padding-y: 0.25rem !default;
+//$pagination-padding-x:              .625rem !default;
+$pagination-color: $black !default;
+$pagination-bg: transparent !default;
+//$pagination-border-width:           0 !default;
+$pagination-border-color: $dark !default;
+
+$pagination-hover-color: white !default;
+$pagination-hover-bg: $black !default;
+$pagination-hover-border-color: $dark !default;
+
+$pagination-focus-box-shadow: none !default;
+
+$pagination-active-color: $black !default;
+$pagination-active-bg: transparent !default;
+$pagination-active-border-color: $dark !default;
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/input-group";
+@import "../node_modules/bootstrap/scss/custom-forms";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/breadcrumb";
+@import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/badge";
+@import "../node_modules/bootstrap/scss/jumbotron";
+@import "../node_modules/bootstrap/scss/alert";
+@import "../node_modules/bootstrap/scss/progress";
+@import "../node_modules/bootstrap/scss/media";
+@import "../node_modules/bootstrap/scss/list-group";
+@import "../node_modules/bootstrap/scss/close";
+@import "../node_modules/bootstrap/scss/toasts";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/tooltip";
+@import "../node_modules/bootstrap/scss/popover";
+@import "../node_modules/bootstrap/scss/carousel";
+@import "../node_modules/bootstrap/scss/spinners";
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/print";
+
+//Reboot
+button:focus {
+  outline: none;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.dropdown-toggle {
+  &:after {
+    display: none !important;
+  }
+}
+
+.dropdown-item {
+  white-space: normal !important;
+}

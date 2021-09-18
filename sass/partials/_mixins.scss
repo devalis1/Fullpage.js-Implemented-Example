@@ -1,0 +1,405 @@
+/*mixins*/
+
+@mixin prefix($property, $arguments) {
+ $prefixes: "webkit", "moz", "ms", "o", "none";
+ @each $prefix in $prefixes {
+   @if $prefix == "none" {
+     #{$property}: $arguments;
+   } @else {
+     -#{$prefix}-#{$property}: $arguments;
+   } 
+ }
+}
+
+@mixin bg-traslucid($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin border-radius($some-number) {
+  border-radius: $some-number!important;
+  -moz-border-radius: $some-number!important;
+  -webkit-border-radius: $some-number!important;
+}
+
+@mixin perspective($some-number) {
+  perspective: $some-number!important;
+  -moz-perspective: $some-number!important;
+  -webkit-perspective: $some-number!important;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;       
+          box-shadow: $shadow;
+}
+
+@mixin text-shadow($shadow...) {
+  -webkit-text-shadow: $shadow;
+     -moz-text-shadow: $shadow;       
+          text-shadow: $shadow;
+}
+
+/*@mixin box-shadow($top, $left, $blur, $size, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $size $color;
+        -moz-box-shadow:inset $top $left $blur $size $color;
+        box-shadow:inset $top $left $blur $size $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $size $color;
+        -moz-box-shadow: $top $left $blur $size $color;
+        box-shadow: $top $left $blur $size $color;
+    }
+}*/
+//Before & after
+@mixin before($position, $url, $bgL, $bgT, $width, $height, $top, $left, $mleft:0, $mtop:0){
+  @if $position == left {
+    &:before{content:' '; background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; top: $top; left: $left; margin-top: $mtop; margin-left: $mleft; right: auto;} 
+  }
+  @if $position == right {
+    &:before{content:' '; background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; top: $top; right: $left; margin-top: $mtop; margin-right: $mleft; left: auto;} 
+  }
+}
+
+@mixin after($position, $url, $bgL, $bgT, $width, $height, $top, $left, $mleft:0, $mtop:0){
+  @if $position == left {
+    &:after{content:' '; background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; top: $top; left: $left; margin-top: $mtop; margin-left: $mleft; right: auto;} 
+  }
+  @if $position == right {
+    &:after{content:' '; background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; top: $top; right: $left; margin-top: $mtop; margin-right: $mleft; left: auto;} 
+  }
+
+  @if $position == leftBottom {
+    &:after{content:' '; background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; bottom: $top; left: $left; margin-bottom: $mtop; margin-left: $mleft; right: auto;} 
+  }
+  @if $position == rightBottom {
+    &:after{content:' '; background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; bottom: $top; right: $left; margin-bottom: $mtop; margin-right: $mleft; left: auto;} 
+  }
+
+}
+
+
+@mixin bg-customPos($position, $url, $bgL, $bgT, $width, $height, $top, $left, $mleft:0, $mtop:0){
+  @if $position == left {
+    background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; top: $top; left: $left; margin-top: $mtop; margin-left: $mleft; right: auto;
+  }
+  @if $position == right {
+    background: url($url) $bgL $bgT no-repeat; width: $width; height: $height; top: $top; right: $left; margin-top: $mtop; margin-right: $mleft; left: auto;
+  }
+}
+
+
+
+@mixin background ($url, $repeat:no-repeat, $x:0, $y:0) {
+    background-image: url($url);
+    background-repeat: #{$repeat};
+    background-position: #{$x}px #{$y}px;
+}
+
+//cover background
+@mixin cover-background($img-uri, $background-top:"center", $background-left:"center", $background-attachment:"fixed") {
+  background: url($img-uri) no-repeat unquote($background-top) unquote($background-left) unquote($background-attachment); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
+
+//animation
+// @mixin keyframe($name) {
+//     @-webkit-keyframes $name {
+//         @content;
+//     }
+
+//     @-moz-keyframes $name {
+//         @content;
+//     }
+
+//     @-ms-keyframes $name {
+//         @content;
+//     }
+
+//     @-o-keyframes $name {
+//         @content;
+//     }
+
+//     @keyframes $name {
+//         @content;
+//     }
+// }
+
+
+
+
+@mixin animation ($delay, $duration, $animation) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    -o-animation-delay: $delay;
+    -o-animation-duration: $duration;
+    -o-animation-name: $animation;
+    -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}
+
+
+
+/*...............................................................................................................................................*/
+
+
+@function my-calculation-function($some-number, $another-number){
+  @return $some-number + $another-number
+}
+
+@function calc-percent($target, $container) {
+  @return ($target / $container) * 100%;
+}
+
+@function cp($target, $container) {
+  @return calc-percent($target, $container);
+}
+
+
+
+/*Set a rem font size with pixel fallback
+/*Rem is similar to the em value, but instead of being relative to the parent element it’srelative to the font-size set in the <html>.
+It has all the benefits of em but you don’t get issues with e.g (compounding) since rem is only relative to the html element. The bad part is there’s no support for rem units in IE8 and below. But with this mixin we can create a fallback to pixels when rem isn’t supported.*/
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+
+
+/*Breakpoints
+When Sass 3.2 was released some time ago, they made it possible to define names to our media queries, which makes the usage of them a lot cleaner. Instead of calling them @media (min-width: 600px) we can give them more semantic names like “breakpoint-large” or “breakpoint-a-really-large-computer-machine”.
+*/
+@mixin bp-large {
+  @media only screen and (max-width: 60em) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media only screen and (max-width: 40em) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media only screen and (max-width: 30em) {
+    @content;
+  }
+}
+
+/*SVG background images with PNG and retina fallback
+This mixin depends on Modernizr and creates a bit more work for you when creating images for your site, but it’s really worth it in the end.
+You need one .svg file, that will serve as the default background image. You’ll also need a regular .png that serves as a fallback for non-svg-supporting browsers. And last you need a twice as large .png as a second fallback to retina screens.
+All in all you need this:
+
+    pattern.svg
+    pattern.png
+    pattern@2x.png
+*/
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}
+
+
+/*Transitions
+As with animations, transitions also make your code quite bloated which can hurt the readability. But this is also solved by using a mixin for it.*/
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+
+/*Cross browser opacity
+This mixin ensures cross browser opacity all the way down to Internet Explorer 5. Though if you have to optomize for IE5, you have a lot bigger problems than opacity, godspeed my friend.*/
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+/*Clearfix
+There’s a lot of different clearfix hacks out there on the web. This one is created by (Nicolas Gallagher) and I’ve found it to be the most solid one. Works in IE6 and up.*/
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/*Mixins for semi-transparent colors*/
+@mixin alpha-background-color($color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  background-color: $solid-color;
+  background-color: $color;
+}
+
+
+/*With just a bit more effort, you can use a little Sass interpolation to make a generic mixin that you can use to set any color attribute:*/
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+
+/*For transparent backgrounds in IE I guess you can also use a filter :*/
+
+@mixin transparent($color, $alpha) {
+    $rgba: rgba($color, $alpha);
+    $ie-hex-str: ie-hex-str($rgba);
+    @extend .transparent-background;
+    background-color: $rgba;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+/*Sass - Converting Hex to RGBa for background opacity. The rgba() function can accept a single hex color as well decimal RGB values. For example, this would work just fine:*/
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin color-opacity($color, $opacity: 0.3) {
+    color: $color; /* The Fallback */
+    color: rgba($color, $opacity);
+}
+
+
+
+/*Push auto
+
+To quickly centre a block element without having to worry about if there is any top or bottom margin already applied. */
+@mixin push--auto {
+    margin: { 
+        left: auto;
+        right: auto;
+    }
+}
+
+/*When using ::before and ::after you'll always need these three, so we're saving two lines of code every time you use this.
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}*/
+
+// Browser Prefixes
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+
+// Rotate
+@mixin rotate ($deg) { 
+  @include transform(rotate(#{$deg}deg));
+}
+
+// Scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+// Translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// Skew
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// Transform Origin
+@mixin transform-origin ($origin) {
+      -webkit-transform-origin: $origin;
+      -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+
+
+
+@mixin linear-gradient($angle, $color-stops...) {
+  $_angle-with-vendor-prefix: "";
+  $_angle: "";
+  @if $angle == "to top" or $angle == "bottom" {
+    $_angle-with-vendor-prefix: bottom;
+    $_angle: to top;
+  } @else if $angle == "to right" or $angle == "left" {
+    $_angle-with-vendor-prefix: left;
+    $_angle: to right;
+  } @else if $angle == "to bottom" or $angle == "top" {
+    $_angle-with-vendor-prefix: top;
+    $_angle: to bottom;
+  } @else if $angle == "to left" or $angle == "right" {
+    $_angle-with-vendor-prefix: right;
+    $_angle: to left;
+  } @else if $angle == "to top right" or $angle == "bottom left" {
+    $_angle-with-vendor-prefix: bottom left;
+    $_angle: to top right;
+  } @else if $angle == "to bottom right" or $angle == "top left" {
+    $_angle-with-vendor-prefix: top left;
+    $_angle: to bottom right;
+  } @else if $angle == "to bottom left" or $angle == "top right" {
+    $_angle-with-vendor-prefix: top right;
+    $_angle: to bottom left;
+  } @else if $angle == "to top left" or $angle == "bottom right" {
+    $_angle-with-vendor-prefix: bottom right;
+    $_angle: to top left;
+  } @else {
+    $_angle-with-vendor-prefix: $angle % 360;
+    $_angle: (90 - $angle) % 360;
+  }
+  background: -webkit-linear-gradient($_angle-with-vendor-prefix, $color-stops);
+  background: -moz-linear-gradient($_angle-with-vendor-prefix, $color-stops);
+  background: -o-linear-gradient($_angle-with-vendor-prefix, $color-stops);
+  background: linear-gradient($_angle, $color-stops);
+}

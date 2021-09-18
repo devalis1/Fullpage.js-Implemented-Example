@@ -1,0 +1,40 @@
+
+@font-face {
+	font-family: "FagoNoExtraBold";
+	src: url("../fonts/FagoNoExtraBold.woff") format("woff"),
+	url("../fonts/FagoNoExtraBold.woff2") format("woff2");
+	// font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: "FagoNo-BoldCaps";
+    src: url("../fonts/FagoNo-BoldCaps.woff") format("woff"),
+    url("../fonts/FagoNo-BoldCaps.woff2") format("woff2");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Conduit-ITC";
+    src: url("../fonts/Conduit-ITC.woff2") format("woff2"),
+	url("../fonts/Conduit-ITC.woff") format("woff");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Silom";
+    src: url("../fonts/Silom.woff2") format("woff2"),
+	url("../fonts/Silom.woff") format("woff");
+    font-style: normal;
+}
+
+
+$Fago: 'FagoNoExtraBold';
+$FagoCaps: 'FagoNo-BoldCaps';
+$Conduit: 'Conduit-ITC';
+$Silom: 'Silom';
+
+
+.silom{font-family: $Silom;}
+.cond{ font-family: $Conduit;}
+.font-fago{font-family: $Fago;}
