@@ -1,2 +1,2 @@
 # Fullpage.js-Implemented-Example
-Free Fullpage.js implemented example. Github pages commit example.
+Fullpage.js library usage example on a simple layout. Intended to show how it can be applied on a different website.
